@@ -8,6 +8,7 @@ RUN apt-get update
 RUN apt-get install -y tokumx
 RUN sed -i'' -e '/logpath/d' /etc/tokumx.conf
 RUN rm -rf /var/lib/apt/lists/*
+RUN echo never | tee /sys/kernel/mm/transparent_hugepage/enabled
 
 # Define mountable directories.
 VOLUME ["/data/db"]
